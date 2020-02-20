@@ -11,7 +11,6 @@ import (
 
 func main() {
 	// Sender Credentials - replace with your respective keys
-	
 	senderPublicKey := "GBLPKM32JA4KTYAEWO55XSVLJNGYIABKHP6KYROKA4ZEUCGAARVLCRYU"
 	senderSecretKey := "SA2ORJEER4H2QECTRCYM67CM6IFC2INOWE2OVCNWQWX3IGULTKJC3KQL"
 	pair, _ := keypair.ParseFull(senderSecretKey)
