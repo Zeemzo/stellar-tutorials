@@ -11,18 +11,18 @@ import (
 
 func main() {
 	// Issuer Credentials - replace with your respective keys
-	IssuerPublicKey := "GDCIKZ4KZN5CKMFGWKKSHULXXEY532CQHG2BSWASW6FMARQCJAVSUT4K"
-	IssuerSecretKey := "SC355CFGLTZNFR6DP2Q5MWHAOSGKX7PN7DN3IIRLMTQ7IIURHDSADEG4"
+	IssuerPublicKey := "GC2HSDISNE676F23TSAXE3WJWGVS3PUG7WHH3KJDS2BYOIQWP4XJYVVA"
+	IssuerSecretKey := "SAWYJEMWLENAGPLTEYAH55EHHYYZ2QU6Q76ITUSS3ROHYITH2J5UJ7SC"
 	IssuerKeypair, _ := keypair.ParseFull(IssuerSecretKey)
 
 	// Distributor Credentials - replace with your respective keys
-	DistributorPublicKey := "GBL52YIW6JYNDI3V36HPJQTRZHFCXDZYMMN24DKXSN5OL4DAEKAKVD6A"
-	DistributorSecretKey := "SDRBHV2TA3QJ633YQBS3ODETVX5ELKDDUUXLX74RKNP2VKAP4LPODW3S"
+	DistributorPublicKey := "GCGZDP5FLFJMVPY4WRPPNA5I6B7XV2M3JCZAWTRZHIJ7XXNKUH26NYJX"
+	DistributorSecretKey := "SBUHPUUDUG4HGLTJBBIPNZ7UY65V4SVWYLIUUH3MXYOJHLSKDXLSP3NM"
 	DistributorKeypair, _ := keypair.ParseFull(DistributorSecretKey)
 
 	// User Credentials - replace with your respective keys
-	// UserPublicKey := "GBOLOV24NIKOYCZFKQIATM4TVD6VOMDRKDHAEPI7UYBTX4QYV27GKFRE"
-	UserSecretKey := "SB6FGTDIMZFIRIZO66MPF4RRX4YOZTKS5Y4SURWA37DUQEERWXEG7U3P"
+	// UserPublicKey := "GC3J24BHVNCV6OQIFOEDC6IPYQQ6MJZFP5XPFAGZN6L3T3C4COOFBCMX"
+	UserSecretKey := "SCNUELCHDINKKRW2NKOUYJLK4OFD7NE26MWQ3HYGPIXDAJ5JFOULRGEK"
 	UserKeypair, _ := keypair.ParseFull(UserSecretKey)
 
 	// Set Horizon Client to Testnet
@@ -171,7 +171,7 @@ func LockIsuer(IssuerKeypair *keypair.Full, client *horizonclient.Client) <-chan
 	res := make(chan string)
 
 	go func() {
-		// Get information about the Distributor account
+		// Get information about the Issuer account
 		accountRequest := horizonclient.AccountRequest{AccountID: IssuerKeypair.Address()}
 		Account, err := client.AccountDetail(accountRequest)
 		if err != nil {
