@@ -11,13 +11,13 @@ import (
 
 func main() {
 	// First User's Credentials - replace with your respective keys
-	// FirstPublicKey := "GCVK6TMBR2FV7EU3I5374Y34ZUHN42ORHVSPFATO4XV3FIJ2ISKIC4RD"
-	FirstSecretKey := "SBKZ47DRE6PGE5GAWZAJZK2JKJRBAEJR52VFPDTHI4MCRHYKHNFNCLBS"
+	// FirstPublicKey := "GBV5VZTKXO72JAB46PHAKTZCVBCETVUKOGXOI3XY27EVFXRJW52TLTG3"
+	FirstSecretKey := "SCR2COELWOG6YCY4WILZCJ7AMID5272PUXBA2OBC7B6F7F5E2LKXJIR3"
 	FirstKeypair, _ := keypair.ParseFull(FirstSecretKey)
 
 	// Second User's Credentials - replace with your respective keys
-	SecondPublicKey := "GAZ3RLQ723X3V2SV2N2GXJCBUWOYI552MJ2NM4SENJP2FKUAKAOKUMZW"
-	SecondSecretKey := "SCEZ4AKILNINUCRN4LE67NOTYIXDJCU25EP3ABTMJ5HMJH5DTKAETG7S"
+	SecondPublicKey := "GD46OP3JSAHY2NX5EVFG3TLBAHUYUJDUASSA5ZMQYRETLDUF5LCJQA2J"
+	SecondSecretKey := "SDP75EO6MCYBVFAD7TAUWBLGQ3NEFUBGOIQSQ3AUK3UQHMDYLNK2SLVP"
 	SecondKeypair, _ := keypair.ParseFull(SecondSecretKey)
 
 	// Set Horizon Client to Testnet
@@ -34,7 +34,7 @@ func main() {
 	log.Println("Transaction Hash: ", TestTransactionResponse)
 
 	// Set Options Low Threshold to 2
-	log.Println("STEP 3:Set Options Threshold to 2")
+	log.Println("STEP 3:Set Options Low Threshold to 2")
 	SetThresholdResponse := <-SetThreshold(FirstKeypair, client)
 	log.Println("Transaction Hash: ", SetThresholdResponse)
 
@@ -109,14 +109,14 @@ func SetThreshold(FirstKeypair *keypair.Full,
 	go func() {
 		defer close(res)
 
-		// Get information about the Distributor account
+		// Get information about the First account
 		accountRequest := horizonclient.AccountRequest{AccountID: FirstKeypair.Address()}
 		Account, err := client.AccountDetail(accountRequest)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		threshold:=txnbuild.NewThreshold(2)
+		threshold := txnbuild.NewThreshold(2)
 		// Construct the operation
 		setOptionsOp := txnbuild.SetOptions{
 			LowThreshold: threshold,
